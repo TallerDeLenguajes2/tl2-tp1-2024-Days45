@@ -9,21 +9,21 @@ public enum Estado{
 }
 public class Pedidos
 {
-    private int Nro;
-    private string Obs;
+    private int nro;
+    private string obs;
     private Cliente cliente;
     private Estado estado;
 
     public Pedidos(int nro, string obs, Cliente cliente, Estado estado)
     {
-        Nro1 = nro;
-        Obs1 = obs;
+        this.nro = nro;
+        this.obs = obs;
         this.Cliente = cliente;
         this.Estado = estado;
     }
 
-    public int Nro1 { get => Nro; private set => Nro = value; }
-    public string Obs1 { get => Obs; private set => Obs = value; }
+    public int Nro { get => Nro; private set => Nro = value; }
+    public string Obs { get => Obs; private set => Obs = value; }
     public Cliente Cliente { get => cliente; private set => cliente = value; }
     public Estado Estado { get => estado; private set => estado = value; }
 }

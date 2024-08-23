@@ -9,11 +9,11 @@ public class Cadete
     private string direccion;
     private List<Pedidos> listaPedidos;
 
-    public Cadete(int id, string nombre, string direccion, List<Pedidos> listaPedidos)
+    public Cadete(int id, string nombre, string direccion)
     {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
-        this.listaPedidos = listaPedidos;
+        this.listaPedidos = new List<Pedidos>();
     }
 }
