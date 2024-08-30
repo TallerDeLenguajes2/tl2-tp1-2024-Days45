@@ -23,66 +23,12 @@
 - `AgregarPedido(Pedidos pedido)`: Añade un pedido a la lista de pedidos del cadete.
 - `EliminarPedido(Pedidos pedido)`: Elimina un pedido de la lista de pedidos del cadete.
 - `CalcularJornal()`: Calcula el jornal a cobrar por el cadete.
-
+- `CambiarEstadoPedido`: este método encuentra un pedido específico en una lista por su número y cambia su estado si el pedido existe
 ## Teniendo en cuenta los principios de abstracción y ocultamiento, ¿qué atributos, propiedades y métodos deberían ser públicos y cuáles privados?
-
-### Cadetería
-
-- **Atributos**:
-  - `nombre` (privado): Nombre de la cadetería.
-  - `telefono` (privado): Teléfono de la cadetería.
-  - `listadoCadetes` (privado): Lista de cadetes que trabajan en la cadetería.
-
-- **Métodos**:
-  - `AsignarPedido(Cadete cadete, Pedidos pedido)` (público): Asigna un pedido a un cadete.
-  - `ReasignarPedido(Cadete cadeteOrigen, Cadete cadeteDestino, Pedidos pedido)` (público): Reasigna un pedido de un cadete a otro.
-  - `AgregarCadete(Cadete cadete)` (público): Añade un nuevo cadete a la cadetería.
-  - `EliminarCadete(Cadete cadete)` (público): Elimina un cadete de la cadetería.
-  - `EliminarPedido(Pedidos pedido)` (público): Elimina un pedido y el cliente asociado.
-  - `GenerarInforme()` (público): Genera un informe sobre la actividad de la cadetería.
-
-### Pedidos
-
-- **Atributos**:
-  - `nro` (privado): Número del pedido.
-  - `obs` (privado): Observaciones sobre el pedido.
-  - `cliente` (privado): Cliente asociado al pedido.
-  - `estado` (privado): Estado del pedido.
-
-- **Métodos**:
-  - `CambiarEstado(Estado nuevoEstado)` (público): Cambia el estado del pedido.
-  - `mostrarPedido()` (público): Muestra la información del pedido.
-
-### Cadete
-
-- **Atributos**:
-  - `id` (privado): Identificador único del cadete.
-  - `nombre` (privado): Nombre del cadete.
-  - `direccion` (privado): Dirección del cadete.
-  - `telefono` (privado): Teléfono del cadete.
-  - `listaPedidos` (privado): Lista de pedidos asignados al cadete.
-
-- **Métodos**:
-  - `EntregarPedido(Pedidos pedido)` (público): Marca un pedido como entregado.
-  - `ListarPedidos()` (público): Muestra los pedidos asignados al cadete.
-  - `AgregarPedido(Pedidos pedido)` (público): Añade un pedido a la lista de pedidos del cadete.
-  - `EliminarPedido(Pedidos pedido)` (público): Elimina un pedido de la lista de pedidos del cadete.
-  - `CalcularJornal()` (público): Calcula el jornal a cobrar por el cadete.
-
-### Cliente
-
-- **Atributos**:
-  - `nombre` (privado): Nombre del cliente.
-  - `direccion` (privado): Dirección del cliente.
-  - `telefono` (privado): Teléfono del cliente.
-  - `datosReferenciaDireccion` (privado): Datos de referencia de la dirección del cliente.
-
-- **Métodos**:
-  - `VerDireccionCliente()` (público): Muestra la dirección del cliente.
-  - `VerDatosCliente()` (público): Muestra los datos del cliente.
+-`Atributos`: Todos privados para mantener los detalles internos a salvo y controlar cómo se accede a ellos.
+-`Métodos`: Todos públicos para permitir que otras partes del código interactúen con la clase y usen sus funcionalidades.
 
 ## ¿Cómo diseñaría los constructores de cada una de las clases?
-
 Cadeteria:
 public Cadeteria(string nombre, string telefono)
 {
