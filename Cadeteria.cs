@@ -46,7 +46,7 @@ public class Cadeteria
             cadete.eliminarPedido(pedido);
         }
     }
-    public void reasignarCadete(Cadete anterior, Cadete nuevo, Pedidos pedido){
+    public void ReasignarPedido(Cadete anterior, Cadete nuevo, Pedidos pedido){
         anterior.eliminarPedido(pedido);
         nuevo.agregarPedido(pedido);
     }

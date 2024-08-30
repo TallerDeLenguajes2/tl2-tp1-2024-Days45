@@ -19,5 +19,18 @@ public class Cliente
     public string Nombre { get => nombre; private set => nombre = value; }
     public string Direccion { get => direccion; private set => direccion = value; }
     public string Telefono { get => telefono; private set => telefono = value; }
-    public string DatosReferenciaDireccion { get => DatosReferenciaDireccion; private set => DatosReferenciaDireccion = value; }
+    public string DatosReferenciaDireccion
+    {
+        get => datosReferenciaDireccion;
+        private set => datosReferenciaDireccion = value;
+    }
+    public string VerDireccionCliente()
+    {
+        return Direccion;
+    }
+
+    public string VerDatosCliente()
+    {
+        return $"Nombre: {Nombre}, Dirección: {Direccion}, Teléfono: {Telefono}, Datos de referencia: {DatosReferenciaDireccion}";
+    }
 }

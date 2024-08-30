@@ -1,7 +1,5 @@
 using System;
-
 namespace EspacioCadeteria;
-
 public class Cadete
 {
     private int id;
@@ -9,7 +7,6 @@ public class Cadete
     private string direccion;
     private string telefono;
     private List<Pedidos> listaPedidos;
-
     public Cadete(int id, string nombre, string direccion, string telefono)
     {
         this.Id = id;
@@ -18,7 +15,6 @@ public class Cadete
         this.Telefono = telefono;
         this.ListaPedidos = new List<Pedidos>();
     }
-
     public int Id
     {
         get => id;
@@ -44,7 +40,6 @@ public class Cadete
         get => listaPedidos;
         private set => listaPedidos = value;
     }
-
     public void agregarPedido(Pedidos pedido)
     {
         ListaPedidos.Add(pedido);
@@ -57,15 +52,19 @@ public class Cadete
             listaPedidos.Remove(pedido);
         }
     }
-
     public void CambiarEstadoPedido(int nroPedido, Estado nuevoEstado)
     {
-        var pedido = listaPedidos.FirstOrDefault(p => p.Nro == nroPedido);
+        var pedido = ListaPedidos.FirstOrDefault(p => p.Nro == nroPedido);
         if (pedido != null)
         {
-            pedido.Estado = nuevoEstado;
+            pedido.CambiarEstado(nuevoEstado);
         }
     }
-
-    public void ListarPedidos() { }
+    public void ListarPedidos()
+    {
+        foreach (var pedido in listaPedidos)
+        {
+            pedido.mostrarPedido();
+        }
+    }
 }

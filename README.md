@@ -10,7 +10,7 @@
 ### Cadetería
 
 - `AsignarPedido(Cadete cadete, Pedidos pedido)`: Asigna un pedido a un cadete.
-- `ReasignarPedido(Cadete anterior, Cadete nuevo, Pedido pedido)`: Reasigna un pedido de un cadete a otro.
+- `ReasignarPedido(Cadete anterior, Cadete nuevo, Pedidos pedido)`: Reasigna un pedido de un cadete a otro.
 - `AgregarCadete(Cadete cadete)`: Añade un nuevo cadete a la cadetería.
 - `EliminarCadete(Cadete cadete)`: Elimina un cadete de la cadetería.
 - `EliminarPedido(Pedidos pedido)`: Elimina un pedido y el cliente asociado.
@@ -28,14 +28,30 @@
 
 ### Cadetería
 
-- **Atributos**: -`nombre`(privado):nombre de la cadeteria. -`telefono`(privado): telefono de la cadeteria. -`cadetes` (privado): Lista de cadetes que trabajan en la cadetería.
+- **Atributos**:
+  - `nombre` (privado): Nombre de la cadetería.
+  - `telefono` (privado): Teléfono de la cadetería.
+  - `listadoCadetes` (privado): Lista de cadetes que trabajan en la cadetería.
+
 - **Métodos**:
-  - `AsignarPedido(Cadete cadete, Pedido pedido)` (público): Asigna un pedido a un cadete.
-  - `ReasignarPedido(Cadete cadeteOrigen, Cadete cadeteDestino, Pedido pedido)` (público): Reasigna un pedido de un cadete a otro.
+  - `AsignarPedido(Cadete cadete, Pedidos pedido)` (público): Asigna un pedido a un cadete.
+  - `ReasignarPedido(Cadete cadeteOrigen, Cadete cadeteDestino, Pedidos pedido)` (público): Reasigna un pedido de un cadete a otro.
   - `AgregarCadete(Cadete cadete)` (público): Añade un nuevo cadete a la cadetería.
   - `EliminarCadete(Cadete cadete)` (público): Elimina un cadete de la cadetería.
   - `EliminarPedido(Pedidos pedido)` (público): Elimina un pedido y el cliente asociado.
   - `GenerarInforme()` (público): Genera un informe sobre la actividad de la cadetería.
+
+### Pedidos
+
+- **Atributos**:
+  - `nro` (privado): Número del pedido.
+  - `obs` (privado): Observaciones sobre el pedido.
+  - `cliente` (privado): Cliente asociado al pedido.
+  - `estado` (privado): Estado del pedido.
+
+- **Métodos**:
+  - `CambiarEstado(Estado nuevoEstado)` (público): Cambia el estado del pedido.
+  - `mostrarPedido()` (público): Muestra la información del pedido.
 
 ### Cadete
 
@@ -44,7 +60,8 @@
   - `nombre` (privado): Nombre del cadete.
   - `direccion` (privado): Dirección del cadete.
   - `telefono` (privado): Teléfono del cadete.
-  - `pedidos` (privado): Lista de pedidos asignados al cadete.
+  - `listaPedidos` (privado): Lista de pedidos asignados al cadete.
+
 - **Métodos**:
   - `EntregarPedido(Pedidos pedido)` (público): Marca un pedido como entregado.
   - `ListarPedidos()` (público): Muestra los pedidos asignados al cadete.
@@ -59,6 +76,7 @@
   - `direccion` (privado): Dirección del cliente.
   - `telefono` (privado): Teléfono del cliente.
   - `datosReferenciaDireccion` (privado): Datos de referencia de la dirección del cliente.
+
 - **Métodos**:
   - `VerDireccionCliente()` (público): Muestra la dirección del cliente.
   - `VerDatosCliente()` (público): Muestra los datos del cliente.
@@ -97,4 +115,5 @@ this.Cliente = cliente;
 this.Estado = estado;
 }
 
-## ¿Se le ocurre otra forma que podría haberse realizado el diseño de clases? no se me ocurre
+## ¿Se le ocurre otra forma que podría haberse realizado el diseño de clases?
+Se podría considerar la implementación de interfaces para definir los contratos de las clases Cadete, Cliente, y Pedidos, promoviendo así una mayor flexibilidad y adherencia a los principios de diseño orientado a objetos.
