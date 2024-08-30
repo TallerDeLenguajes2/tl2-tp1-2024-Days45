@@ -16,8 +16,8 @@ public class Cliente
         this.DatosReferenciaDireccion = datosReferenciaDireccion;
     }
 
-    public string Nombre { get => nombre; set => nombre = value; }
-    public string Direccion { get => direccion; set => direccion = value; }
-    public string Telefono { get => telefono; set => telefono = value; }
-    public string DatosReferenciaDireccion { get => DatosReferenciaDireccion; set => DatosReferenciaDireccion = value; }
+    public string Nombre { get => nombre; private set => nombre = value; }
+    public string Direccion { get => direccion; private set => direccion = value; }
+    public string Telefono { get => telefono; private set => telefono = value; }
+    public string DatosReferenciaDireccion { get => DatosReferenciaDireccion; private set => DatosReferenciaDireccion = value; }
 }
