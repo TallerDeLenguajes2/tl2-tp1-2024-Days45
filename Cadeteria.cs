@@ -7,12 +7,14 @@ public class Cadeteria
     private string nombre;
     private string telefono;
     private List<Cadete> listadoCadetes;
+    private List<Pedidos> listadoPedidos;
 
     public Cadeteria(string nombre, string telefono)
     {
         this.Nombre = nombre;
         this.Telefono = telefono;
         this.ListadoCadetes = new List<Cadete>();
+        this.ListadoPedidos = new List<Pedidos>();
     }
 
     public string Nombre
@@ -30,24 +32,42 @@ public class Cadeteria
         get => listadoCadetes;
         private set => listadoCadetes = value;
     }
-
-    public void AsignarPedido(Cadete cadete, Pedidos pedido){
-        cadete.agregarPedido(pedido);
+    public List<Pedidos> ListadoPedidos
+    {
+        get => listadoPedidos;
+        private set => listadoPedidos = value;
     }
-    public void EliminarCadete(Cadete cadete){
+
+    public void agregarPedido(Pedidos pedido)
+    {
+        ListadoPedidos.Add(pedido);
+    }
+
+    public void EliminarCadete(Cadete cadete)
+    {
         ListadoCadetes.Remove(cadete);
     }
-    public void AgregarCadete (Cadete cadete){
+
+    public void AgregarCadete(Cadete cadete)
+    {
         ListadoCadetes.Add(cadete);
     }
-    public void EliminarPedido(Pedidos pedido){
-        foreach (var cadete in ListadoCadetes)
+
+    public void asignarCadetePedido(int idCadete, int nroPedido)
+    {
+        var cadete = ListadoCadetes.FirstOrDefault(c => c.Id == idCadete);
+        var pedido = ListadoPedidos.FirstOrDefault(c => c.Nro == nroPedido);
+        if (cadete != null && pedido != null)
         {
-            cadete.eliminarPedido(pedido);
+            pedido.asignarCadete(cadete);
         }
     }
-    public void ReasignarPedido(Cadete anterior, Cadete nuevo, Pedidos pedido){
-        anterior.eliminarPedido(pedido);
-        nuevo.agregarPedido(pedido);
+
+    public double JornalACobrar(int idCadete)
+    {
+        var pedidosDelCadete = ListadoPedidos.Where(p =>
+            p.Cadete != null && p.Cadete.Id == idCadete
+        );
+        return pedidosDelCadete.Count() * 100;
     }
 }
