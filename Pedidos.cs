@@ -22,7 +22,7 @@ public class Pedidos
         this.obs = obs;
         this.Cliente = cliente;
         this.Estado = estado;
-        this.Cadete=null;
+        this.Cadete = null;
     }
 
     public int Nro { get => nro; private set => nro = value; }
@@ -35,8 +35,9 @@ public class Pedidos
     {
         this.Estado = nuevoEstado;
     }
-    public void asignarCadete(Cadete cadete){
-        this.Cadete=cadete;
+    public void asignarCadete(Cadete cadete)
+    {
+        this.Cadete = cadete;
     }
 
     public void mostrarPedido()
@@ -45,5 +46,13 @@ public class Pedidos
         Console.WriteLine($"Obs: {obs}");
         Console.WriteLine($"Cliente: {cliente.VerDatosCliente()}");
         Console.WriteLine($"Estado: {estado}");
+        if (cadete != null)
+        {
+            Console.WriteLine($"Cadete asignado: {cadete.Nombre}");
+        }
+        else
+        {
+            Console.WriteLine("Cadete no asignado.");
+        }
     }
 }
