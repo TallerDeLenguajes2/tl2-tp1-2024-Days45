@@ -8,8 +8,30 @@ namespace EspacioCadeteria
     {
         static void Main(string[] args)
         {
-            CargarCadeteria cargador = new CargarCadeteria();
-            Cadeteria cadeteria = cargador.Cargar("csv/cadeteria.csv", "csv/cadete.csv");
+            AccesoDatos accesoDatos;
+            Console.WriteLine("Seleccione el tipo de archivo de datos:");
+            Console.WriteLine("1. CSV");
+            Console.WriteLine("2. JSON");
+            Console.Write("Ingrese el número de la opción: ");
+            string opcion = Console.ReadLine();
+            Cadeteria cadeteria;
+            switch (opcion)
+            {
+                case "1":
+                    accesoDatos = new accesoCSV();
+                    cadeteria = accesoDatos.Cargar("csv/cadeteria.csv", "csv/cadete.csv");
+                    break;
+                case "2":
+                    accesoDatos = new accesoJSON();
+                    cadeteria = accesoDatos.Cargar("json/cadeteria.json", "json/cadete.json");
+                    break;
+                default:
+                    Console.WriteLine("Opción no válida. Se usará el acceso por defecto (CSV).");
+                    accesoDatos = new accesoCSV();
+                    cadeteria = accesoDatos.Cargar("csv/cadeteria.csv", "csv/cadete.json.csv");
+                    break;
+            }
+
             bool salir = false;
             while (!salir)
             {
@@ -55,8 +77,22 @@ namespace EspacioCadeteria
         {
             Console.WriteLine("Dar de alta un pedido");
 
-            Console.Write("Ingrese el número del pedido: ");
-            int nro = int.Parse(Console.ReadLine());
+            int nro;
+            while (true)
+            {
+                Console.Write("Ingrese el número del pedido: ");
+                nro = int.Parse(Console.ReadLine());
+
+                // Verificar si el número de pedido ya existe
+                if (cadeteria.ListadoPedidos.Any(p => p.Nro == nro))
+                {
+                    Console.WriteLine("Error: El número de pedido ya está en uso. Intente con un número diferente.");
+                }
+                else
+                {
+                    break;
+                }
+            }
 
             Console.Write("Ingrese las observaciones del pedido: ");
             string obs = Console.ReadLine();
@@ -147,6 +183,14 @@ namespace EspacioCadeteria
             Estado nuevoEstado = (Estado)int.Parse(Console.ReadLine());
 
             pedido.CambiarEstado(nuevoEstado);
+
+            // Verificar si el pedido debe ser eliminado
+            if (nuevoEstado == Estado.Entregado || nuevoEstado == Estado.Cancelado)
+            {
+                cadeteria.eliminarPedido(pedido);
+                Console.WriteLine($"El pedido {nroPedido} ha sido eliminado debido a su estado '{nuevoEstado}'.");
+            }
+
             Console.WriteLine("Estado del pedido cambiado exitosamente. Presione Enter para continuar.");
             Console.ReadLine();
         }

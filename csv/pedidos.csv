@@ -1,0 +1,4 @@
+NroPedido,Observaciones,ClienteNombre,ClienteDireccion,ClienteTelefono,ClienteReferencia,Estado
+1,Entregar rápido,Juan Perez,Calle Falsa 123,123456789,Frente a la plaza,Pendiente
+2,Paquete frágil,Maria Gomez,Calle Luna 45,987654321,Al lado del supermercado,EnProceso
+3,Dejar en portería,Pedro Ramirez,Calle Sol 89,654987321,Cerca del parque,EnProceso
