@@ -1,35 +1,50 @@
 [
-    {
-      "nro": 1,
-      "observaciones": "Entregar rápido",
-      "cliente": {
-        "nombre": "Juan Perez",
-        "direccion": "Calle Falsa 123",
-        "telefono": "123456789",
-        "referencia": "Frente a la plaza"
-      },
-      "estado": "Pendiente"
+  {
+    "Nro": 1,
+    "Obs": "Entrega urgente",
+    "Cliente": {
+      "Nombre": "Juan Perez",
+      "Direccion": "Calle Falsa 123",
+      "Telefono": "123456789",
+      "DatosReferenciaDireccion": "Junto al supermercado"
     },
-    {
-      "nro": 2,
-      "observaciones": "Paquete frágil",
-      "cliente": {
-        "nombre": "Maria Gomez",
-        "direccion": "Calle Luna 45",
-        "telefono": "987654321",
-        "referencia": "Al lado del supermercado"
-      },
-      "estado": "EnProceso"
+    "Estado": 0,
+    "Cadete": null
+  },
+  {
+    "Nro": 2,
+    "Obs": "No dejar el paquete en la puerta",
+    "Cliente": {
+      "Nombre": "Maria Gomez",
+      "Direccion": "Calle Luna 45",
+      "Telefono": "987654321",
+      "DatosReferenciaDireccion": "Cerca del parque central"
     },
-    {
-      "nro": 3,
-      "observaciones": "Dejar en portería",
-      "cliente": {
-        "nombre": "Pedro Ramirez",
-        "direccion": "Calle Sol 89",
-        "telefono": "654987321",
-        "referencia": "Cerca del parque"
-      },
-      "estado": "EnProceso"
-    }
+    "Estado": 1,
+    "Cadete": null
+  },
+  {
+    "Nro": 3,
+    "Obs": "Entregar antes de las 6 PM",
+    "Cliente": {
+      "Nombre": "Pedro Ramirez",
+      "Direccion": "Calle Sol 89",
+      "Telefono": "654987321",
+      "DatosReferenciaDireccion": "Detrás del edificio de oficinas"
+    },
+    "Estado": 1,
+    "Cadete": null
+  },
+  {
+    "Nro": 4,
+    "Obs": "Cliente espera en el lobby",
+    "Cliente": {
+      "Nombre": "pepe",
+      "Direccion": "angod",
+      "Telefono": "6574747",
+      "DatosReferenciaDireccion": "Cerca de la tienda de comestibles"
+    },
+    "Estado": 0,
+    "Cadete": null
+  }
 ]

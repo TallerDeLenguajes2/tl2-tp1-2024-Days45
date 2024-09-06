@@ -4,6 +4,6 @@ namespace EspacioCadeteria;
 
 public abstract class AccesoDatos
 {
-    public abstract Cadeteria Cargar(string archivoCadeteria, string archivoCadete);
-    /*public abstract void Guardar(List<Pedidos> pedidos);*/
+    public abstract Cadeteria Cargar(string archivoCadeteria, string archivoCadete, string archivoPedidos);
+    public abstract void Guardar(List<Pedidos> pedidos, string archivoPedidos);
 }

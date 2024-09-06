@@ -15,23 +15,33 @@ namespace EspacioCadeteria
             Console.Write("Ingrese el número de la opción: ");
             string opcion = Console.ReadLine();
             Cadeteria cadeteria;
+            string rutaCadeteria = "", rutaCadetes = "", rutaPedidos = "";
+
             switch (opcion)
             {
                 case "1":
                     accesoDatos = new accesoCSV();
-                    cadeteria = accesoDatos.Cargar("csv/cadeteria.csv", "csv/cadete.csv");
+                    rutaCadeteria = "csv/cadeteria.csv";
+                    rutaCadetes = "csv/cadete.csv";
+                    rutaPedidos = "csv/pedidos.csv";
+                    cadeteria = accesoDatos.Cargar(rutaCadeteria, rutaCadetes, rutaPedidos);
                     break;
                 case "2":
                     accesoDatos = new accesoJSON();
-                    cadeteria = accesoDatos.Cargar("json/cadeteria.json", "json/cadete.json");
+                    rutaCadeteria = "json/cadeteria.json";
+                    rutaCadetes = "json/cadete.json";
+                    rutaPedidos = "json/pedidos.json";
+                    cadeteria = accesoDatos.Cargar(rutaCadeteria, rutaCadetes, rutaPedidos);
                     break;
                 default:
                     Console.WriteLine("Opción no válida. Se usará el acceso por defecto (CSV).");
                     accesoDatos = new accesoCSV();
-                    cadeteria = accesoDatos.Cargar("csv/cadeteria.csv", "csv/cadete.json.csv");
+                    rutaCadeteria = "csv/cadeteria.csv";
+                    rutaCadetes = "csv/cadete.csv";
+                    rutaPedidos = "csv/pedidos.csv";
+                    cadeteria = accesoDatos.Cargar(rutaCadeteria, rutaCadetes, rutaPedidos);
                     break;
             }
-
             bool salir = false;
             while (!salir)
             {
@@ -48,16 +58,16 @@ namespace EspacioCadeteria
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        DarDeAltaPedido(cadeteria);
+                        DarDeAltaPedido(cadeteria, accesoDatos, rutaPedidos);
                         break;
                     case "2":
-                        AsignarPedido(cadeteria);
+                        AsignarPedido(cadeteria, accesoDatos, rutaPedidos);
                         break;
                     case "3":
-                        CambiarEstadoPedido(cadeteria);
+                        CambiarEstadoPedido(cadeteria, accesoDatos, rutaPedidos);
                         break;
                     case "4":
-                        ReasignarPedido(cadeteria);
+                        ReasignarPedido(cadeteria, accesoDatos, rutaPedidos);
                         break;
                     case "5":
                         MostrarInforme(cadeteria);
@@ -73,8 +83,10 @@ namespace EspacioCadeteria
             }
         }
 
-        static void DarDeAltaPedido(Cadeteria cadeteria)
+        static void DarDeAltaPedido(Cadeteria cadeteria, AccesoDatos accesoDatos, string rutaPedidos)
         {
+            Console.WriteLine("Pedidos anteriores:");
+            cadeteria.MostrarPedidos();
             Console.WriteLine("Dar de alta un pedido");
 
             int nro;
@@ -96,28 +108,24 @@ namespace EspacioCadeteria
 
             Console.Write("Ingrese las observaciones del pedido: ");
             string obs = Console.ReadLine();
-
             Console.Write("Ingrese el nombre del cliente: ");
             string nombreCliente = Console.ReadLine();
-
             Console.Write("Ingrese la dirección del cliente: ");
             string direccionCliente = Console.ReadLine();
-
             Console.Write("Ingrese el teléfono del cliente: ");
             string telefonoCliente = Console.ReadLine();
-
             Console.Write("Ingrese los datos de referencia de la dirección del cliente: ");
             string datosReferencia = Console.ReadLine();
-
             Cliente cliente = new Cliente(nombreCliente, direccionCliente, telefonoCliente, datosReferencia);
             Pedidos pedido = new Pedidos(nro, obs, cliente, Estado.Pendiente);
-
-            cadeteria.ListadoPedidos.Add(pedido);
-            Console.WriteLine("Pedido creado exitosamente. Presione Enter para continuar.");
+            cadeteria.agregarPedido(pedido);
+            accesoDatos.Guardar(cadeteria.ListadoPedidos, rutaPedidos);
+            Console.WriteLine("Pedido creado y guardado exitosamente. Presione Enter para continuar.");
             Console.ReadLine();
         }
 
-        static void AsignarPedido(Cadeteria cadeteria)
+
+        static void AsignarPedido(Cadeteria cadeteria, AccesoDatos accesoDatos, string rutaPedidos)
         {
             Console.WriteLine("Asignar pedido a un cadete");
 
@@ -129,10 +137,7 @@ namespace EspacioCadeteria
             }
 
             Console.WriteLine("Pedidos:");
-            foreach (var pedido in cadeteria.ListadoPedidos)
-            {
-                Console.WriteLine($"Número: {pedido.Nro}, Cliente: {pedido.Cliente.Nombre}, Cadete: {(pedido.Cadete != null ? pedido.Cadete.Nombre : "No asignado")}");
-            }
+            cadeteria.MostrarPedidos();
 
             Console.Write("Ingrese el número del pedido a asignar: ");
             int nroPedido = int.Parse(Console.ReadLine());
@@ -154,13 +159,17 @@ namespace EspacioCadeteria
             int idCadete = int.Parse(Console.ReadLine());
 
             cadeteria.asignarCadetePedido(idCadete, nroPedido);
+
+            accesoDatos.Guardar(cadeteria.ListadoPedidos, rutaPedidos);
+
             Console.WriteLine("Pedido asignado exitosamente. Presione Enter para continuar.");
             Console.ReadLine();
         }
 
-
-        static void CambiarEstadoPedido(Cadeteria cadeteria)
+        static void CambiarEstadoPedido(Cadeteria cadeteria, AccesoDatos accesoDatos, string rutaPedidos)
         {
+            Console.WriteLine("Pedidos registrados:");
+            cadeteria.MostrarPedidos();
             Console.WriteLine("Cambiar estado de un pedido");
 
             Console.Write("Ingrese el número del pedido: ");
@@ -191,14 +200,18 @@ namespace EspacioCadeteria
                 Console.WriteLine($"El pedido {nroPedido} ha sido eliminado debido a su estado '{nuevoEstado}'.");
             }
 
+            // Guardar la lista de pedidos actualizada
+            accesoDatos.Guardar(cadeteria.ListadoPedidos, rutaPedidos);
+
             Console.WriteLine("Estado del pedido cambiado exitosamente. Presione Enter para continuar.");
             Console.ReadLine();
         }
 
-        static void ReasignarPedido(Cadeteria cadeteria)
+        static void ReasignarPedido(Cadeteria cadeteria, AccesoDatos accesoDatos, string rutaPedidos)
         {
             Console.WriteLine("Reasignar un pedido a otro cadete");
 
+            cadeteria.MostrarPedidos();
             Console.Write("Ingrese el número del pedido a reasignar: ");
             int nroPedido = int.Parse(Console.ReadLine());
 
@@ -219,6 +232,10 @@ namespace EspacioCadeteria
             int idNuevoCadete = int.Parse(Console.ReadLine());
 
             cadeteria.asignarCadetePedido(idNuevoCadete, nroPedido);
+
+            // Guardar la lista de pedidos actualizada
+            accesoDatos.Guardar(cadeteria.ListadoPedidos, rutaPedidos);
+
             Console.WriteLine("Pedido reasignado exitosamente. Presione Enter para continuar.");
             Console.ReadLine();
         }

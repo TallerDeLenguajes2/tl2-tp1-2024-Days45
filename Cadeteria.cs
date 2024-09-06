@@ -42,7 +42,8 @@ public class Cadeteria
     {
         ListadoPedidos.Add(pedido);
     }
-    public void eliminarPedido(Pedidos pedido){
+    public void eliminarPedido(Pedidos pedido)
+    {
         ListadoPedidos.Add(pedido);
     }
 
@@ -65,7 +66,21 @@ public class Cadeteria
             pedido.asignarCadete(cadete);
         }
     }
-
+    public void MostrarPedidos()
+    {
+        if (ListadoPedidos.Count == 0)
+        {
+            Console.WriteLine("No hay pedidos registrados.");
+        }
+        else
+        {
+            foreach (var pedido in ListadoPedidos)
+            {
+                pedido.mostrarPedido();
+                Console.WriteLine("----------------------------");
+            }
+        }
+    }
     public double JornalACobrar(int idCadete)
     {
         var pedidosDelCadete = ListadoPedidos.Where(p =>

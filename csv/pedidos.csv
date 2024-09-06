@@ -1,4 +1,6 @@
-NroPedido,Observaciones,ClienteNombre,ClienteDireccion,ClienteTelefono,ClienteReferencia,Estado
+Numero,Observaciones,NombreCliente,DireccionCliente,TelefonoCliente,Referencia,Estado
 1,Entregar rápido,Juan Perez,Calle Falsa 123,123456789,Frente a la plaza,Pendiente
 2,Paquete frágil,Maria Gomez,Calle Luna 45,987654321,Al lado del supermercado,EnProceso
 3,Dejar en portería,Pedro Ramirez,Calle Sol 89,654987321,Cerca del parque,EnProceso
+4,cajero,yo,en mi casa,4064309,paque quieres,EnProceso
+5,lo necesito a las 6,pascualina,1 de mayo,3814064309,cerca de la vtv,Pendiente
