@@ -22,7 +22,7 @@
 - `ListarPedidos()`: Muestra los pedidos asignados al cadete.
 - `AgregarPedido(Pedidos pedido)`: Añade un pedido a la lista de pedidos del cadete.
 - `EliminarPedido(Pedidos pedido)`: Elimina un pedido de la lista de pedidos del cadete.
-- `CalcularJornal()`: Calcula el jornal a cobrar por el cadete.
+- `JornalACobrar()`: Calcula el jornal a cobrar por el cadete.
 - `CambiarEstadoPedido`: este método encuentra un pedido específico en una lista por su número y cambia su estado si el pedido existe
 ## Teniendo en cuenta los principios de abstracción y ocultamiento, ¿qué atributos, propiedades y métodos deberían ser públicos y cuáles privados?
 -`Atributos`: Todos privados para mantener los detalles internos a salvo y controlar cómo se accede a ellos.

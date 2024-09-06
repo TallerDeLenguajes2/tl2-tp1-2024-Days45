@@ -40,6 +40,11 @@ public class Cadete
         get => listaPedidos;
         private set => listaPedidos = value;
     }
+    public double JornalACobrar()
+    {
+        double montoPorPedido = 100; // Supongamos que cada pedido genera 100 unidades de ganancia
+        return ListaPedidos.Count * montoPorPedido;
+    }
     public void agregarPedido(Pedidos pedido)
     {
         ListaPedidos.Add(pedido);

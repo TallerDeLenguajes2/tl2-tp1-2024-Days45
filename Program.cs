@@ -212,7 +212,7 @@ namespace EspacioCadeteria
             {
                 Cadete = c,
                 CantidadEnvios = c.ListaPedidos.Count,
-                MontoGanado = c.ListaPedidos.Count * 100 // Supongamos que cada pedido genera 100 unidades de ganancia
+                MontoGanado = c.JornalACobrar()
             }).ToList();
 
             foreach (var item in informeCadetes)
@@ -231,5 +231,6 @@ namespace EspacioCadeteria
             Console.WriteLine("Presione Enter para continuar.");
             Console.ReadLine();
         }
+
     }
 }
