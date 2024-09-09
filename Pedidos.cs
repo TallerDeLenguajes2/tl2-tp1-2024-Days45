@@ -38,6 +38,7 @@ public class Pedidos
     public void asignarCadete(Cadete cadete)
     {
         this.Cadete = cadete;
+        this.Estado = Estado.EnProceso;
     }
 
     public void mostrarPedido()

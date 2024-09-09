@@ -8,8 +8,13 @@
       "Telefono": "123456789",
       "DatosReferenciaDireccion": "Junto al supermercado"
     },
-    "Estado": 0,
-    "Cadete": null
+    "Estado": 2,
+    "Cadete": {
+      "Id": 2,
+      "Nombre": "Ana G\u00F3mez",
+      "Direccion": "Calle Falsa 456",
+      "Telefono": "345-678-9012"
+    }
   },
   {
     "Nro": 2,
@@ -30,21 +35,33 @@
       "Nombre": "Pedro Ramirez",
       "Direccion": "Calle Sol 89",
       "Telefono": "654987321",
-      "DatosReferenciaDireccion": "Detrás del edificio de oficinas"
+      "DatosReferenciaDireccion": "Detr\u00E1s del edificio de oficinas"
     },
     "Estado": 1,
     "Cadete": null
   },
   {
-    "Nro": 4,
-    "Obs": "Cliente espera en el lobby",
+    "Nro": 5,
+    "Obs": "ob2",
     "Cliente": {
-      "Nombre": "pepe",
-      "Direccion": "angod",
-      "Telefono": "6574747",
-      "DatosReferenciaDireccion": "Cerca de la tienda de comestibles"
+      "Nombre": "nombre2",
+      "Direccion": "dire2",
+      "Telefono": "tel2",
+      "DatosReferenciaDireccion": "ref2"
     },
-    "Estado": 0,
+    "Estado": 1,
+    "Cadete": null
+  },
+  {
+    "Nro": 7,
+    "Obs": "obs3",
+    "Cliente": {
+      "Nombre": "nombre3",
+      "Direccion": "dire3",
+      "Telefono": "3243243242",
+      "DatosReferenciaDireccion": "ref3"
+    },
+    "Estado": 2,
     "Cadete": null
   }
 ]

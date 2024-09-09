@@ -82,10 +82,11 @@ public class Cadeteria
         }
     }
     public double JornalACobrar(int idCadete)
-    {
-        var pedidosDelCadete = ListadoPedidos.Where(p =>
-            p.Cadete != null && p.Cadete.Id == idCadete
-        );
-        return pedidosDelCadete.Count() * 100;
-    }
+{
+    var pedidosDelCadete = ListadoPedidos.Where(p =>
+        p.Cadete != null && p.Cadete.Id == idCadete && p.Estado == Estado.Entregado
+    );
+    return pedidosDelCadete.Count() * 500; 
+}
+
 }
