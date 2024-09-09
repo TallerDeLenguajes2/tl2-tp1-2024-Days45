@@ -42,7 +42,7 @@ public class Cadete
     }
     public double JornalACobrar()
     {
-        double montoPorPedido = 100; // Supongamos que cada pedido genera 100 unidades de ganancia
+        double montoPorPedido = 100; 
         return ListaPedidos.Count * montoPorPedido;
     }
     public void agregarPedido(Pedidos pedido)

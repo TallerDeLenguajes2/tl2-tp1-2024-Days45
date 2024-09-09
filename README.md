@@ -14,15 +14,12 @@
 - `AgregarCadete(Cadete cadete)`: Añade un nuevo cadete a la cadetería.
 - `EliminarCadete(Cadete cadete)`: Elimina un cadete de la cadetería.
 - `EliminarPedido(Pedidos pedido)`: Elimina un pedido y el cliente asociado.
-- `GenerarInforme()`: Genera un informe sobre la actividad de la cadetería.
-
 ### Cadete
 
 - `EntregarPedido(Pedidos pedido)`: Marca un pedido como entregado.
 - `ListarPedidos()`: Muestra los pedidos asignados al cadete.
 - `AgregarPedido(Pedidos pedido)`: Añade un pedido a la lista de pedidos del cadete.
 - `EliminarPedido(Pedidos pedido)`: Elimina un pedido de la lista de pedidos del cadete.
-- `JornalACobrar()`: Calcula el jornal a cobrar por el cadete.
 - `CambiarEstadoPedido`: este método encuentra un pedido específico en una lista por su número y cambia su estado si el pedido existe
 ## Teniendo en cuenta los principios de abstracción y ocultamiento, ¿qué atributos, propiedades y métodos deberían ser públicos y cuáles privados?
 -`Atributos`: Todos privados para mantener los detalles internos a salvo y controlar cómo se accede a ellos.
@@ -62,4 +59,3 @@ this.Estado = estado;
 }
 
 ## ¿Se le ocurre otra forma que podría haberse realizado el diseño de clases?
-Se podría considerar la implementación de interfaces para definir los contratos de las clases Cadete, Cliente, y Pedidos, promoviendo así una mayor flexibilidad y adherencia a los principios de diseño orientado a objetos.
