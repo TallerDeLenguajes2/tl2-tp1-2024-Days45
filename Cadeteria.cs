@@ -44,7 +44,7 @@ public class Cadeteria
     }
     public void eliminarPedido(Pedidos pedido)
     {
-        ListadoPedidos.Add(pedido);
+        ListadoPedidos.Remove(pedido);
     }
 
     public void EliminarCadete(Cadete cadete)
