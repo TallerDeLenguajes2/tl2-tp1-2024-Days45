@@ -41,19 +41,9 @@ public class Pedidos
         this.Estado = Estado.EnProceso;
     }
 
-    public void mostrarPedido()
+    public string mostrarPedido()
     {
-        Console.WriteLine($"Nro: {nro}");
-        Console.WriteLine($"Obs: {obs}");
-        Console.WriteLine($"Cliente: {cliente.VerDatosCliente()}");
-        Console.WriteLine($"Estado: {estado}");
-        if (cadete != null)
-        {
-            Console.WriteLine($"Cadete asignado: {cadete.Nombre}");
-        }
-        else
-        {
-            Console.WriteLine("Cadete no asignado.");
-        }
+        return $"Nro: {nro}\nObs: {obs}\nCliente: {cliente.VerDatosCliente()}\nEstado: {estado}\n" +
+               (cadete != null ? $"Cadete asignado: {cadete.Nombre}\n" : "Cadete no asignado.\n");
     }
 }
