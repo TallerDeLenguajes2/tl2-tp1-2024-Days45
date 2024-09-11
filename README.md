@@ -15,8 +15,6 @@
 - `EliminarCadete(Cadete cadete)`: Elimina un cadete de la cadetería.
 - `EliminarPedido(Pedidos pedido)`: Elimina un pedido y el cliente asociado.
 ### Cadete
-
-- `EntregarPedido(Pedidos pedido)`: Marca un pedido como entregado.
 - `ListarPedidos()`: Muestra los pedidos asignados al cadete.
 - `AgregarPedido(Pedidos pedido)`: Añade un pedido a la lista de pedidos del cadete.
 - `EliminarPedido(Pedidos pedido)`: Elimina un pedido de la lista de pedidos del cadete.
