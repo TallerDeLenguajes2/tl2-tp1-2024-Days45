@@ -61,18 +61,23 @@ namespace EspacioCadeteria
                 switch (opcionMenu)
                 {
                     case "1":
+                        Console.WriteLine("-----------------------------------------------------");
                         gestor.DarDeAltaPedido();
                         break;
                     case "2":
+                        Console.WriteLine("-----------------------------------------------------");
                         gestor.AsignarPedido();
                         break;
                     case "3":
+                        Console.WriteLine("-----------------------------------------------------");
                         gestor.CambiarEstadoPedido();
                         break;
                     case "4":
+                        Console.WriteLine("-----------------------------------------------------");
                         gestor.ReasignarPedido();
                         break;
                     case "5":
+                        Console.WriteLine("-----------------------------------------------------");
                         gestor.MostrarInforme();
                         break;
                     case "6":
