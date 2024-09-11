@@ -7,7 +7,6 @@ namespace EspacioCadeteria;
 
 public class accesoCSV : AccesoDatos
 {
-
     public override Cadeteria Cargar(string archivoCsvCadeteria, string archivoCsvCadete, string archivoPedidos)
     {
         Cadeteria cadeteria = null;
@@ -35,7 +34,7 @@ public class accesoCSV : AccesoDatos
         }
         foreach (Cadete cadete in listaCadetes)
         {
-            cadeteria.AgregarCadete(cadete);
+            cadeteria.AgregarCadete(cadete.Id, cadete.Nombre, cadete.Direccion, cadete.Telefono);
         }
 
         // Cargar datos de los pedidos
@@ -62,6 +61,7 @@ public class accesoCSV : AccesoDatos
 
         return cadeteria;
     }
+
     public override void Guardar(List<Pedidos> pedidos, string archivoPedidos)
     {
         using (var writer = new StreamWriter(archivoPedidos))

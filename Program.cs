@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System; 
 using System.Linq;
 using System.Collections.Generic;
 
@@ -100,14 +100,11 @@ namespace EspacioCadeteria
             string telefonoCliente = Console.ReadLine();
             Console.Write("Ingrese los datos de referencia de la dirección del cliente: ");
             string datosReferencia = Console.ReadLine();
-            Cliente cliente = new Cliente(nombreCliente, direccionCliente, telefonoCliente, datosReferencia);
-            Pedidos pedido = new Pedidos(nro, obs, cliente, Estado.Pendiente);
-            cadeteria.agregarPedido(pedido);
+            cadeteria.agregarPedido(nro, obs, nombreCliente, direccionCliente, telefonoCliente, datosReferencia);
             accesoDatos.Guardar(cadeteria.ListadoPedidos, rutaPedidos);
             Console.WriteLine("Pedido creado y guardado exitosamente. Presione Enter para continuar.");
             Console.ReadLine();
         }
-
 
         static void AsignarPedido(Cadeteria cadeteria, AccesoDatos accesoDatos, string rutaPedidos)
         {
@@ -130,14 +127,6 @@ namespace EspacioCadeteria
 
             Console.Write("Ingrese el número del pedido a asignar: ");
             int nroPedido = int.Parse(Console.ReadLine());
-
-            var pedidoSeleccionado = pedidosSinCadete.FirstOrDefault(p => p.Nro == nroPedido);
-            if (pedidoSeleccionado == null)
-            {
-                Console.WriteLine("El pedido no existe o ya está asignado a un cadete. Presione Enter para continuar.");
-                Console.ReadLine();
-                return;
-            }
 
             Console.WriteLine("Cadetes disponibles:");
             foreach (var cadete in cadeteria.ListadoCadetes)
@@ -189,14 +178,11 @@ namespace EspacioCadeteria
 
             pedido.CambiarEstado(nuevoEstado);
 
-            // Verificar si el pedido debe ser eliminado
             if (nuevoEstado == Estado.Cancelado)
             {
-                cadeteria.eliminarPedido(pedido);
-                Console.WriteLine($"El pedido {nroPedido} ha sido eliminado debido a su estado '{nuevoEstado}'.");
+                cadeteria.eliminarPedido(nroPedido);
             }
 
-            // Guardar la lista de pedidos actualizada
             accesoDatos.Guardar(cadeteria.ListadoPedidos, rutaPedidos);
 
             Console.WriteLine("Estado del pedido cambiado exitosamente. Presione Enter para continuar.");
@@ -236,13 +222,11 @@ namespace EspacioCadeteria
 
             cadeteria.asignarCadetePedido(idNuevoCadete, nroPedido);
 
-            // Guardar la lista de pedidos actualizada
             accesoDatos.Guardar(cadeteria.ListadoPedidos, rutaPedidos);
 
             Console.WriteLine("Pedido reasignado exitosamente. Presione Enter para continuar.");
             Console.ReadLine();
         }
-
 
         static void MostrarInforme(Cadeteria cadeteria)
         {

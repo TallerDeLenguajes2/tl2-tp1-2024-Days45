@@ -43,7 +43,7 @@ namespace EspacioCadeteria
             {
                 foreach (Cadete cadete in listaCadetes)
                 {
-                    cadeteria.AgregarCadete(cadete);
+                    cadeteria.AgregarCadete(cadete.Id, cadete.Nombre, cadete.Direccion, cadete.Telefono);
                 }
 
                 foreach (Pedidos pedido in listaPedidos)
